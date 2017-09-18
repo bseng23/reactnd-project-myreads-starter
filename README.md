@@ -8,7 +8,7 @@ The main App.js file is up
 
 To run the project:
 
-* install all project dependencies with `npm install`
+* install all project dependencies (react-router-dom, prop-types, escape-string-regexp) with `npm install`
 * start the development server with `npm start`
 
 ## What You're Getting
