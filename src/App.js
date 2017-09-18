@@ -13,7 +13,6 @@ class BooksApp extends React.Component {
     books: []
   }
 
-
   componentDidMount() {
     BooksAPI.getAll().then((bookShelf) => {
       this.setState({ bookShelf })
@@ -37,7 +36,6 @@ class BooksApp extends React.Component {
 
   searchShelfUpdate(book, shelf) {
     var bookID = book.id
-    this.listShelfUpdate(book, shelf)
     this.setState((prevBooks) => ({
       books: prevBooks.books.map((book) => {
         if (book.id === bookID) {
@@ -47,7 +45,6 @@ class BooksApp extends React.Component {
         return book;
       })
     }))
-    console.log(this.state.books)
   }
 
   listShelfUpdate(book, shelf) {
@@ -61,7 +58,12 @@ class BooksApp extends React.Component {
           return book;
         })
       }))
-    console.log(this.state.books)
+  }
+
+  refreshBookList() {
+    BooksAPI.getAll().then((bookShelf) => {
+      this.setState({ bookShelf })
+    })
   }
 
 
@@ -84,6 +86,9 @@ class BooksApp extends React.Component {
           }}
           onSearchShelfUpdate={(book, shelf) => {
             this.searchShelfUpdate(book, shelf)
+          }}
+          onRefreshBookList={() => {
+            this.refreshBookList()
           }}
           />
         )}
