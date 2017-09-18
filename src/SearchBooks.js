@@ -28,11 +28,11 @@ class SearchBooks extends React.Component {
         }
       }
 
-    /*arrowClick = () => {
-        if (this.props.onArrowClick)
-            this.props.onArrowClick
+    refreshBookList = () => {
+        if (this.props.onRefreshBookList)
+            this.props.onRefreshBookList()
 
-    }*/
+    }
     
     render() {
         const { books } = this.props
@@ -49,8 +49,10 @@ class SearchBooks extends React.Component {
         return(
             <div className="app">
                 <div className="search-books">
-                    <div className="search-books-bar">
+                    <div className="search-books-bar" >
                     <Link className="close-search"
+                    onClick={this.refreshBookList}
+                    
                         to={{
                             pathname: "/" 
                         }}                        
