@@ -2,8 +2,6 @@
 
 This is a fork of the MyReads starter template for the final assessment project for Udacity's React Fundamentals course. 
 
-The main App.js file is up
-
 ## TL;DR
 
 To run the project:
@@ -34,3 +32,17 @@ To run the project:
     ├── ListBooks.js # New component to render the bookshelf of Currently Read, Want to Read, and Read books.
     └── SearchBooks.js # New component to render the search of books
 ```
+
+## Future Improvements
+
+Future improvements to the app, as suggested by the instructor, are listed below:
+
+* myreads/src/App.js
+- Add 'react-throttle' or 'debounce from lodash' to the search API (line 23) to minimize API calls and make the app more efficient. Attempted to incorporate this but kept running into errors.
+- Add <Switch> from 'react-router-dom' and create a component for when no pages match, it will redirect to a 404 error page.
+
+* myreads/src/ListBooks.js
+- Create 2 components, Shelf and Book. 'Shelf' will share a single responsibility of displaying books, and 'Book' will render only the books. These 2 components were created and attempted but had issue with updating 'shelf' state from Book Component up to the parent component App.js. 
+
+* myreads/src/SearchBooks.js
+- Create 2 components, Shelf and Book. 'Shelf' will share a single responsibility of displaying books, and 'Book' will render only the books. These 2 components were created and attempted but had issue with updating 'shelf' state from Book Component up to the parent component App.js. 
