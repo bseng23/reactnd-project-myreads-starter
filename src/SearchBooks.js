@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 
 class SearchBooks extends React.Component {
-    static PropTypes = {
+    static propTypes = {
         books: PropTypes.array.isRequired
     }
 
@@ -68,7 +68,9 @@ class SearchBooks extends React.Component {
                             <li key={book.id}>
                                 <div className="book">
                                 <div className="book-top">
-                                    <div className="book-cover" key={book.id} style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+                                    {book.hasOwnProperty('imageLinks') === true ? 
+                                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div> : 
+                                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(http://via.placeholder.com/128x193?text=No%20Cover)`}}></div>}
                                     <div className="book-shelf-changer">
                                     <select key={book.shelf} value={book.shelf} onChange={(event) => this.handleChange(book, event.target.value)}>
                                         <option value="moveTo" disabled>Move to...</option>
@@ -79,8 +81,8 @@ class SearchBooks extends React.Component {
                                     </select>
                                     </div>
                                     </div>
-                                <div className="book-title" key={book.title}>{book.title}</div>                       
-                                    <div className="book-authors" key={book.author}>{book.author}</div>
+                                <div className="book-title">{book.title}</div>                       
+                                    <div className="book-authors">{book.authors ? book.authors.join(', ') : ''}</div>
                                 </div>
                             </li>
                         ))}
