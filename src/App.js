@@ -21,16 +21,19 @@ class BooksApp extends React.Component {
   
   bookSearch(bookQuery) {
     BooksAPI.search(bookQuery, 20).then((results) => {
-      const checkBookShelf = results.map(book => {
-        book.shelf = "none"
-        this.state.bookShelf.forEach(b => {
-          if (book.id === b.id) {
-            book.shelf = b.shelf
-          }
+      if (typeof results.length !== "undefined") {
+        const checkBookShelf = results.map(book => {
+          book.shelf = "none"
+          this.state.bookShelf.forEach(b => {
+            if (book.id === b.id) {
+              book.shelf = b.shelf
+            }
+          })
+          return book
         })
-        return book
-      })
-      this.setState({ books: checkBookShelf })
+        this.setState({ books: checkBookShelf })
+        
+      }
     })
   }   
 
@@ -68,6 +71,7 @@ class BooksApp extends React.Component {
 
 
   render() {
+
     return (
       <div>
         <Route exact path="/" render={() => (
